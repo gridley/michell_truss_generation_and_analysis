@@ -1,0 +1,24 @@
+joints
+10 0
+10 10
+20 0
+20 10
+30 10
+pins
+0 0
+35 20
+connections
+0p 0j
+0p 1j
+0j 1j
+0j 2j
+0j 3j
+1j 3j
+2j 3j
+2j 4j
+3j 4j
+4j 1p
+forces
+0 0 -2500
+2 0 -1000
+4 0 -1000
