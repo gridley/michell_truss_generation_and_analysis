@@ -142,7 +142,7 @@ for height in heights:
                 outfile.write('%f -%f\n'%(x, y))
                 joint_i += 1
 
-        ### ADD THE TWO PINS ###
+        ### ADD THE PIN AND ROLLER ###
         outfile.write('pins\n')
         outfile.write('0 %f\n'%(height/2))
         outfile.write('0 -%f\n'%(height/2))
@@ -194,11 +194,13 @@ for height in heights:
             pts_per_side = int((len(layer_indices[i])-1)/2)
             pts_per_side_next = int((len(layer_indices[i+1])-1)/2)
 
-            outfile.write('%ij %ij\n'%(layer_indices[i][0], layer_indices[i+1][0]))
+            # outfile.write('%ij %ij\n'%(layer_indices[i][0], layer_indices[i+1][0]))
             outfile.write('%ij %ij\n'%(layer_indices[i][pts_per_side+1], layer_indices[i+1][0]))
             for k in range(len(layer_indices)-1):
                 if pts_per_side_next-k>=0:
                     outfile.write('%ij %ij\n'%(layer_indices[i][pts_per_side-k], layer_indices[i+1][pts_per_side_next-k]))
+            for k in range(pts_per_side+2, 2*pts_per_side+1):
+                outfile.write('%ij %ij\n'%(layer_indices[i][k], layer_indices[i+1][k-2]))
                 # outfile.write('%ij %ij\n'%(layer_indices[i][-k], layer_indices[i+1][-k]))
                 # except:
                 #     pass
